@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Product Search{% endblock %}
+{% block content %}
+
+    <div class="alert alert-info" role="alert">
+        <b>"{{ query }}"</b>의 검색 결과입니다.
+    </div>
+    <div class="row">
+        {% for item in items %}
+        <div class="col-4">
+            <div class="card">
+                <a href="{{item.get_url}}"><img class="card-img-top" src="{{item.item_image.url}}" alt="Item Image"></a>
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{{item.get_absolute_url}}">{{item.item_name}}</a></h5>
+                     <p>{{item.item_price}}원</p>
+
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="row mx-auto">
+            <p class="text-center my_search_text">검색결과가 없습니다.</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

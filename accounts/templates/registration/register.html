@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %}- Login{% endblock %}
+{% block content %}
+
+<head>
+	<meta charset="UTF-8">
+	<title>begreen 회원가입</title>
+</head>
+
+<body>
+<div class="row">
+    <div class="main-wrap">
+    <header>
+           <a href="/" class="logo">
+             <h1 class="blind">Be Green</h1>
+             </a>
+    </header></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-8 panel panel-default">
+            <div class="alert alert-info">회원 정보를 입력해주세요.</div>
+            <form action="" method="post">
+                {{form.as_p}}
+                {% csrf_token %}
+                <input class="register-button-wrap " type="submit" value="회원가입">
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+</div>
+</body>
+
+<style>
+
+body{
+    background: #F5EEDC;
+}
+
+h1{
+color: #97BFB4;
+}
+
+.row{
+	width:100%;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin-top: 100px;
+}
+
+.row .main-wrap{
+	width:768px;
+}
+
+.row .main-wrap header {
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 35px;
+}
+
+.btn btn-primary {
+	padding-top: 2px;
+	border-radius: 5px;
+	width: 300px;
+	height : 48px;
+	font-size: 18px;
+	background: #97BFB4;
+	color: white;
+	border: solid 1px #97BFB4;
+}
+
+.register-button-wrap {
+	padding-top: 2px;
+	border-radius: 5px;
+	width: 300px;
+	height : 48px;
+	font-size: 18px;
+	background: #97BFB4;
+	color: white;
+	border: solid 1px #97BFB4;
+}
+
+</style>
+
+</html>
+{% endblock %}
+

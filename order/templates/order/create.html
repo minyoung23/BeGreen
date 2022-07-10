@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}결제 페이지{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Django Shop</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav justify-content-end">
+        <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+    <li class="nav-item"><a class="nav-link" href="">BRAND</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'shop:item_all' %}">SHOP</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'photo:photo_list' %}">배출후기</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'board:board_list' %}">공지사항</a></li>
+
+        <li class="nav-item">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'search_app:searchResult' %}" method="get">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="search" placeholder="상품 검색" aria-label="Search" name="q">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search">검색</i></button>
+            </form>
+        </li>
+
+
+        {% if user.is_authenticated %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">로그아웃</a></li>
+        <li class="nav-item"><a class="nav-link" href="">마이페이지</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'cart:detail' %}">장바구니</a></li>
+        {% else %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">로그인</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">회원가입</a></li>
+        {% endif %}
+
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-info" role="alert">
+              결제 정보
+            </div>
+    <ul class="list-group">
+        {% for product in cart %}
+            <li class="list-group-item">
+                수량: {{product.quantity}}
+                상품 가격: {{product.item.item_price}}
+            </li>
+        {% endfor %}
+        {% if cart.coupon %}
+            <li class="list-group-item">
+                    {{ cart.coupon.code }} 쿠폰 사용으로 {{ cart.coupon.amount }}원 할인
+            </li>
+        {% endif %}
+    </ul>
+            <div class="alert alert-success" role="alert">결제 가격: {{cart.get_total_price}} 원 </div>
+
+    <!-- form에 class 추가 -->
+    <form action="" method="post" class="order-form">
+        {{form.as_p}}
+        {% csrf_token %}
+
+        <!-- hidden field 추가-->
+        <input type="hidden" name="pre_order_id" value="0">
+        <input type="hidden" name="amount" value="{{ cart.get_total_price|floatformat:'2' }}">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="submit" class="btn btn-primary float-right" value="주문하기">
+    </form>
+    </div>
+    </div>
+{% endblock %}
+</div>
+
+</body>
+</html>

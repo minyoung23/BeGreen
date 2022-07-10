@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Product Detail{% endblock %}
+{% block content %}
+<!--훗날 상품후기 추가-->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{item.item_image.url}}" width="100%">
+                </div>
+                <div class="col">
+                    <h1 class="display-6">{{item.item_name}}</h1>
+
+                    <p><span class="badge badge-secondary">가격</span> {{item.item_price}}</p>
+                    <p><span class="badge badge-secondary">브랜드</span> {{item.brand}}</p>
+                    <form action="{% url 'cart:item_add' item.id %}" method="post">
+                        {{add_to_cart}}
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-primary btn-sm" value="장바구니 담기">
+                    </form>
+                    <h5><span class="badge badge-secondary">설명</span>{{item.description|linebreaks}}</h5>
+                </div>
+            </div>
+
+        </div>
+<hr>
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 panel panel-default">
+                {% load disqus_tags %}
+                {% disqus_show_comments %}
+            </div>
+            <div class="col-md-2"></div>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}- List{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<button><a href="{% url 'board:board_upload' %}" class="nav-link">글쓰기</a></button>
+{% else %}
+로그인하신 분만 글쓰기 가능
+{% endif %}
+
+    {% for post in boards %}
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 panel panel-default">
+
+                {% if post.photo %}
+                    <p><img src="{{post.photo.url}}" style="width: 360px; height: 300px;" alt="no image"></p>
+                {% else %}
+
+                {% endif %}
+
+                <p>작성자: {{post.author.username}}</p>
+                <p><a href="{% url 'board:board_detail' pk=post.id %}" >제목: {{post.title|linebreaksbr}}</a></p>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    {% endfor %}
+{% endblock %}

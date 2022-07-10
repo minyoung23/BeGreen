@@ -1,0 +1,193 @@
+
+{% extends 'base.html' %}
+{% block title %}Category Page{% endblock %}
+{% block content %}
+{% load static %}
+<html lang="ko">
+    <head>
+		<link href = "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'test_board/style.css' %}">
+		<title>beGreen</title>
+		        <script>
+            	var index = 0;   //이미지에 접근하는 인덱스
+            	window.onload = function(){
+                	slideShow();
+            	}
+
+            	function slideShow() {
+            	var i;
+            	var x = document.getElementsByClassName("slide1");  //slide1에 대한 dom 참조
+            	for (i = 0; i < x.length; i++) {
+                	x[i].style.display = "none";   //처음에 전부 display를 none으로 한다.
+           		 }
+            	index++;
+            	if (index > x.length) {
+                	index = 1;  //인덱스가 초과되면 1로 변경
+            	}
+            	x[index-1].style.display = "block";  //해당 인덱스는 block으로
+            	setTimeout(slideShow, 3000);
+
+            	}
+        		</script>
+    </head>
+    <body>
+		<!-- <div class="section">
+			<input type="radio" name="slide" id="slide01" checked>
+			<input type="radio" name="slide" id="slide02">
+			<input type="radio" name="slide" id="slide03">
+			<div class="slidewrap">
+
+				<ul class="slidelist">
+					< 슬라이드 영역>
+					<li class="slideitem">
+						<a>
+							<div class="textbox">
+								<h3>첫번째 슬라이드</h3>
+								<p>첫번째 슬라이드 입니다.</p>
+							</div>
+							<img src="../../static/slide.jpg">
+						</a>
+					</li>
+					<li class="slideitem">
+						<a>
+
+							<div class="textbox">
+								<h3>두번째 슬라이드</h3>
+								<p>두번째 슬라이드 입니다.</p>
+							</div>
+							<img src="../../static/slide.jpg">
+						</a>
+					</li>
+					<li class="slideitem">
+						<a>
+
+							<div class="textbox">
+								<h3>세번째 슬라이드</h3>
+								<p>세번째 슬라이드 입니다.</p>
+							</div>
+							<img src="../../static/slide.jpg">
+						</a>
+					</li class="slideitem">
+
+					<!-- 좌,우 슬라이드 버튼>
+					<div class="slide-control">
+						<div>
+							<label for="slide03" class="left"></label>
+							<label for="slide02" class="right"></label>
+						</div>
+						<div>
+							<label for="slide01" class="left"></label>
+							<label for="slide03" class="right"></label>
+						</div>
+						<div>
+							<label for="slide02" class="left"></label>
+							<label for="slide01" class="right"></label>
+						</div>
+					</div>
+
+				</ul>
+				< 페이징>
+				<ul class="slide-pagelist">
+					<li><label for="slide01"></label></li>
+					<li><label for="slide02"></label></li>
+					<li><label for="slide03"></label></li>
+				</ul>
+			</div>
+
+		</div > -->
+		 <div class="section">
+            <img class="slide1" src="../../static/01.jpg">
+            <img class="slide1" src="../../static/02.jpg">
+            <img class="slide1" src="../../static/03.jpg">
+        </div>
+
+		<div class="main_text0">
+			<h1>ABOUT</h1><br>
+			<div class="contents1">지구를 살리는 제로웨이스트 쇼핑몰, 비그린입니다.</div>
+
+			<ul class="icons">
+				<li>
+				  <div class="icon_img">
+					<img src="../../static/1.jpg">
+				  </div>
+				  <div class="contents1_bold">린넨 벽걸이 달력</div>
+				  <div class="contents2">
+					  당신의 일상에 작은 초록빛 하나, <br><br>
+
+				  <div class="more">
+					  <a href="">MORE</a>
+				  </div>
+				</li>
+
+				<li>
+				  <div class="icon_img">
+					<img src="../../static/2.jpg">
+				  </div>
+				  <div class="contents1_bold">제로웨이스트 키트</div>
+				  <div class="contents2">
+					  일상에서 플라스틱 사용을 줄일 수 <br>있도록 도움을 주는 첫 도전 키트
+				  </div>
+				  <div class="more">
+					<a href="">MORE</a>
+				  </div>
+				</li>
+
+				<li>
+				  <div class="icon_img">
+					<img src="../../static/3.jpg">
+				  </div>
+				  <div class="contents1_bold">천연 세제비누</div>
+				  <div class="contents2">
+					면마스크, 행주 등 유해 물질 걱정 없는 <br>세탁이 가능한 팜프리 세탁비누
+				  </div>
+				  <div class="more">
+					<a href="">MORE</a>
+				  </div>
+				</li>
+			  </ul>
+			</div>
+
+			<div class="main_text1">
+				<h1>PRODUCT</h1><br>
+				<div class="contents1">비그린의 친환경 제품들</div>
+				<div class="product">
+				  <div class="food_photo">
+					<img src="../../static/5.jpg">
+				  </div>
+				  <div class="contents2">
+					  <h2>건강한 소비가 만드는 건강한 지구</h2>
+					  지속 가능한 방식으로 생산한 건강한 제품을 고르는 사람. <br>
+					  비그린(beGreen)은 제로웨이스트 라이프스타일 브랜드입니다. <br>
+					  자연의 건강한 순환을 위해 노력합니다. <br><br>
+
+					  간결한 나의 삶을 통한 지구회복을 위해 <br>
+					  라이프스타일을 진단하고, 건강한 소비를 처방해보세요! <br>
+					  #Zero Waste  #Sustainable Community  #Restore Planet <br><br>
+
+					  조금은 불편해 보일 수도 있는 시작, <br>
+					  하지만 무엇보다도 나와 우리가 살아갈 지구를 지킬 이로운 도구들. <br>
+					  제로웨이스트 입문 키트로 <br>
+					  건강한 일상의 회복에 한걸음 다가가 보세요.<br>
+				  </div>
+				</div>
+			  </div>
+
+
+
+			<div class="footer">
+				<div>LOGO</div>
+				<div>
+				  CEO. (주) begreen  ㅣ  대표: 고민보다 go <br>
+				  Addr. 서울특별시 성동구 살곶이길 200 정보문화관 2F 고객상담실 Fax/Tel. <br>
+				  Num. 388-23-43010 <br>
+				  Tel/Fax. 02 - 5330 - 4935 <br>
+				  COPYRIGHT 2022. BEGREEN. ALL RIGHT RESERVED.
+				</div>
+			  </div>
+			</div>
+
+
+
+	</body>
+</html>
+{% endblock %}

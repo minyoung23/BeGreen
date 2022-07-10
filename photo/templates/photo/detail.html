@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{object.text|truncatechars:10}}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 panel panel-default">
+                <h1>{{object.title|linebreaksbr}}</h1>
+                <p><img src="{{object.photo.url}}" style="width: 360px; height: 300px;"></p>
+
+                <p>내용: {{object.text|linebreaksbr}}</p>
+
+                {% if request.user == object.author %}
+                <a href="{% url 'photo:photo_delete' object.id %}" class="btn btn-outline-danger btn-sm float-right">
+                    Delete</a>
+                <a href="{% url 'photo:photo_update' object.id %}" class="btn btn-outline-success btn-sm float-right">
+                    Update</a>
+                {% endif %}
+                <p>작성자: {{object.author.username}}</p>
+            </div>
+            <div class="col-md-2"></div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 panel panel-default">
+                {% load disqus_tags %}
+                {% disqus_show_comments %}
+            </div>
+            <div class="col-md-2"></div>
+    </div>
+
+
+{% endblock %}

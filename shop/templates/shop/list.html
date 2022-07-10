@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Category Page{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-2">
+            <div class="list-group">
+                <a href="/" class="list-group-item {% if not current_category %}active{% endif %}">All</a>
+                {% for c in categories %}
+                    <a href="{{c.get_absolute_url}}" class="list-group-item {% if current_category.slug == c.slug %}active{% endif %}">{{c.name}}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="col">
+            <div class="alert alert-info" role="alert">
+                {% if current_category %}
+                    {{current_category.name}}
+                {% else %}
+                    All Products
+                {% endif %}
+            </div>
+            <div class="row">
+            {% for item in items %}
+
+                <div class="col-4">
+                    <div class="card">
+                      <a href="{{item.get_absolute_url}}">
+                          <img class="card-img-top" src="{{item.item_image.url}}" alt="Item Image">
+                      </a>
+                      <div class="card-body">
+                          <a href="{{item.get_absolute_url}}">
+                            <h5 class="card-title">{{item.item_name}}</h5>
+                          </a>
+                          <p class="card-text">{{item.item_price}}원</p>
+                      </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
