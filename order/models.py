@@ -6,9 +6,9 @@ from coupon.models import Coupon
 
 class Order(models.Model):
     name = models.CharField(max_length=50, verbose_name='구매자', null=True)
-    email = models.EmailField()
-    address_country = models.CharField(max_length=250, verbose_name='도시 주소', null=True)
-    address_house = models.CharField(max_length=250, verbose_name='주거지 주소', null=True)
+    email = models.EmailField(verbose_name='이메일')
+    address = models.CharField(max_length=250, verbose_name='주소', null=True)
+    tel = models.CharField(max_length=30, verbose_name='휴대폰 번호', null=True)
     postal_code = models.CharField(max_length=20, verbose_name='우편번호')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

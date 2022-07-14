@@ -60,8 +60,7 @@
     <ul class="list-group">
         {% for product in cart %}
             <li class="list-group-item">
-                수량: {{product.quantity}}
-                상품 가격: {{product.item.item_price}}
+                수량: {{product.quantity}}개  /  상품 가격: {{product.item.item_price}}
             </li>
         {% endfor %}
         {% if cart.coupon %}
