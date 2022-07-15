@@ -23,3 +23,4 @@ def item_detail(request, id, item_slug=None):
 
 def index(request):
     return render(request, 'shop/index.html')
+

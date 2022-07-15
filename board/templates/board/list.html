@@ -14,13 +14,6 @@
             <div class="col-md-2"></div>
             <div class="col-md-8 panel panel-default">
 
-                {% if post.photo %}
-                    <p><img src="{{post.photo.url}}" style="width: 360px; height: 300px;" alt="no image"></p>
-                {% else %}
-
-                {% endif %}
-
-                <p>작성자: {{post.author.username}}</p>
                 <p><a href="{% url 'board:board_detail' pk=post.id %}" >제목: {{post.title|linebreaksbr}}</a></p>
             </div>
             <div class="col-md-2"></div>

@@ -14,9 +14,9 @@
 
                 {% if request.user == object.author %}
                 <a href="{% url 'photo:photo_delete' object.id %}" class="btn btn-outline-danger btn-sm float-right">
-                    Delete</a>
+                    삭제</a>
                 <a href="{% url 'photo:photo_update' object.id %}" class="btn btn-outline-success btn-sm float-right">
-                    Update</a>
+                    수정</a>
                 {% endif %}
                 <p>작성자: {{object.author.username}}</p>
             </div>

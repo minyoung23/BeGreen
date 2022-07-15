@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+주문 확인 페이지
+{% endblock %}
+
+<!-- 필터를 사용할 수 있게 해준다 -->
+{% load humanize%}
+{% block content %}
+<div class="row mt-5">
+    <div class="col-12">
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">전화번호</th>
+                    <th scope="col">주소</th>
+                    <th scope="col">주문가격</th>
+                    <th scope="col">주문상태</th>
+                </tr>
+            </thead>
+            <tbody class="text-dark">
+                {% for order in order_list %}
+                <tr>
+                    <td>{{order.id}}</td>
+                    <td>{{order.tel}}</td>
+                    <td>{{order.address}}</td>
+                    <td>{{order.get_total_price|intcomma}}원</td>
+                    {% if order.paid %}
+                    <td><strong>결제 완료</strong></td>
+                    {% else %}
+                    <td><strong>결제 실패</strong></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

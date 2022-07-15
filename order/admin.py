@@ -8,6 +8,7 @@ def export_to_csv(modeladmin, request, queryset):
     opts = modeladmin.model._meta
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment;filename={}.csv'.format(opts.verbose_name)
+    response.write(u'\ufeff'.encode('utf8'))
     writer = csv.writer(response)
 
     fields = [field for field in opts.get_fields() if not field.many_to_many and not field.one_to_many]
@@ -33,7 +34,7 @@ class OrderItemInline(admin.TabularInline):
     raw_id_fields = ['item']
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id','name','email','address','tel','postal_code','paid','created','updated']
+    list_display = ['id','name','email','address','tel','postal_code','notice','paid','created','updated']
     list_filter = ['paid','created','updated']
     inlines = [OrderItemInline] # 다른 모델과 연결되어있는 경우 한페이지 표시하고 싶을 때
     actions = [export_to_csv]

@@ -56,7 +56,7 @@
         {% endif %}
 
         <tr class="total">
-            <td>합계 금액</td>
+            <td>합계 금액 + 배송비(2500원)</td>
             <td colspan="4"></td>
             <td class="num">{{ cart.get_total_price}}원</td>
         </tr>
@@ -71,7 +71,7 @@
 
     <p class="text-right">
         <a href='{% url "shop:item_all" %}' class="btn btn-secondary">계속 쇼핑하기</a>
-        <a href='{% url "order:order_create" %}' class="btn btn-primary">구매하기</a>
+        <a href='{% url "orders:order_create" %}' class="btn btn-primary">구매하기</a>
     </p>
 
 {% endblock %}

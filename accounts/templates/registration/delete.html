@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>회원 탈퇴</h1>
+<form method="POST">
+    {% csrf_token %}
+    <p>정말로 탈퇴하시겠습니까?</p>
+    <input type="submit" value="탈퇴" class="btn btn-danger">
+</form>
+{% endblock %}

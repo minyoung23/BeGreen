@@ -11,17 +11,22 @@
                 <div class="col">
                     <h1 class="display-6">{{item.item_name}}</h1>
 
-                    <p><span class="badge badge-secondary">가격</span> {{item.item_price}}</p>
+                    <p><span class="badge badge-secondary">가격</span> {{item.item_price}}원</p>
                     <p><span class="badge badge-secondary">브랜드</span> {{item.brand}}</p>
+                    <p><span class="badge badge-secondary">수량</span> {{item.item_amt}}개</p>
+                    {% if user.is_authenticated %}
                     <form action="{% url 'cart:item_add' item.id %}" method="post">
                         {{add_to_cart}}
                         {% csrf_token %}
                         <input type="submit" class="btn btn-primary btn-sm" value="장바구니 담기">
                     </form>
+                    {% else %}
+                    로그인하신 분만 구매 가능
+                    {% endif %}
                     <h5><span class="badge badge-secondary">설명</span>{{item.description|linebreaks}}</h5>
                 </div>
             </div>
-
+주문금액 50000원 이상이면 무료. 배송비 기본 2500원
         </div>
 <hr>
     <div class="row">

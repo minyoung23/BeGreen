@@ -18,9 +18,9 @@
 
                 {% if request.user == object.author %}
                 <a href="{% url 'board:board_delete' pk=object.id %}" class="btn btn-outline-danger btn-sm float-right">
-                    Delete</a>
+                    삭제</a>
                 <a href="{% url 'board:board_update' pk=object.id %}" class="btn btn-outline-success btn-sm float-right">
-                    Update</a>
+                    수정</a>
                 {% endif %}
             </div>
             <div class="col-md-2"></div>

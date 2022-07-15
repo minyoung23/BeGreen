@@ -14,7 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+ROOT_DIR=os.path.dirname(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'coupon',
     'order',
+    'django.contrib.humanize',
+    'brand',
 ]
 
 MIDDLEWARE = [
@@ -130,8 +132,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATIC_ROOT=os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS=[os.path.join(BASE_DIR, 'static')]
+
+##이 부분 절대 지우지 마세요! 이부분이 있어야 결제창이 뜹니다.
+STATICFILES_DIRS =(os.path.join(BASE_DIR,'static'),)
+
+AUTH_USER_MODEL='auth.User'
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
@@ -143,4 +148,8 @@ CART_ID='cart_in_session'
 DISQUS_WEBSITE_SHORTNAME='begreen-django'
 SITE_ID=1
 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
+IAMPORT_KEY = '비워두기'
+IAMPORT_SECRET = '비워두기'
 
