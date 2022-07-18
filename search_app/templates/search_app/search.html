@@ -1,10 +1,47 @@
+<!DOCTYPE html>
 {% extends 'base.html' %}
 {% block title %}Product Search{% endblock %}
 {% block content %}
+<head>
+    <style>
+        body{
+	        background: #ffffff;
+        }
+        .content-box {
+            // border: solid red 1px;
+            padding: 10px;
+            background-color: #F5EEDC;
+            height: 100vh;
+        }
+        header{
+            padding-top: 30px;
+        }
+        h1{
+            color: #97BFB4;
+        }
+        .notice {
+            margin-top: 20px;
+        }
 
+        .row .card {
+            width: 250px;
+            height: 350px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="content-box">
+    <header>
+        <h1>Search</h1>
+    </header>
+
+    <section class="notice">
     <div class="alert alert-info" role="alert">
         <b>"{{ query }}"</b>의 검색 결과입니다.
     </div>
+    </section>
+
     <div class="row">
         {% for item in items %}
         <div class="col-4">
@@ -23,4 +60,7 @@
         </div>
         {% endfor %}
     </div>
+</div>
+</body>
+</html>
 {% endblock %}

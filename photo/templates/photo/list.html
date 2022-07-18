@@ -22,6 +22,7 @@
 
                 <p>작성자: {{post.author.username}}</p>
                 <a href="{% url 'photo:photo_detail' pk=post.id %}"><p>제목: {{post.title|linebreaksbr}}</p></a>
+                <p>작성일자: {{post.created}}</p>
             </div>
             <div class="col-md-2"></div>
         </div>

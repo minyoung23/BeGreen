@@ -5,9 +5,9 @@ from django.urls import reverse
 
 class Photo(models.Model):
     author=models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_photos')
-    photo=models.ImageField(upload_to='photos/%Y/%m/%d', null=True, blank=True)
-    title=models.CharField(max_length=50, null=True, blank=True)
-    text=models.TextField()
+    photo=models.ImageField(upload_to='photos/%Y/%m/%d', null=True, blank=True, verbose_name='사진')
+    title=models.CharField(max_length=50, null=True, blank=True, verbose_name='제목')
+    text=models.TextField(verbose_name='내용')
     created=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now=True)
 

@@ -38,9 +38,9 @@
 
   <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
     <ul class="navbar-nav justify-content-end">
-        <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'brand:brand' %}">BRAND</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'shop:item_all' %}">SHOP</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">홈</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'brand:brand' %}">브랜드</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'shop:item_all' %}">쇼핑</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'photo:photo_list' %}">배출후기</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'board:board_list' %}">공지사항</a></li>
 
@@ -84,7 +84,7 @@
         {% for product in cart %}
             <li class="list-group-item">
                 <a href="{{ item.get_absolute_url }}">
-               <img src="{{ item.item_image.url }}" width="100" height="100" class="img-thumbnail"></a>&nbsp;&nbsp;&nbsp;&nbsp;수량: {{product.quantity}}개  /  상품 가격: {{product.item.item_price}}원 + 기본 배송비(2500원)
+               <img src="{{ item.item_image.url }}" width="100" height="100" class="img-thumbnail"></a>&nbsp;&nbsp;&nbsp;&nbsp;수량: {{product.quantity}}개  /  상품 가격: {{product.item.item_price}}원
             </a></li>
         {% endfor %}
         {% if cart.coupon %}
@@ -93,7 +93,7 @@
             </li>
         {% endif %}
     </ul>
-            <div class="alert alert-success" role="alert"><b>결제 가격: {{cart.get_total_price}} 원</b></div>
+            <div class="alert alert-success" role="alert"><b>결제 가격: {{cart.get_total_price}} 원(배송비 2500원 포함)</b></div>
 
     <!-- form에 class 추가 -->
     <form action="" method="post" class="order-form">
@@ -114,7 +114,6 @@
 
 
 <style>
-
 
 body{
     background: #F5EEDC;

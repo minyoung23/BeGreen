@@ -11,6 +11,8 @@
                 <p><img src="{{object.photo.url}}" style="width: 360px; height: 300px;"></p>
 
                 <p>내용: {{object.text|linebreaksbr}}</p>
+                <p>작성일자: {{object.created}}</p>
+                <p>수정일자: {{object.updated}}</p>
 
                 {% if request.user == object.author %}
                 <a href="{% url 'photo:photo_delete' object.id %}" class="btn btn-outline-danger btn-sm float-right">

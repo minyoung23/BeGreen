@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-2">
             <div class="list-group">
-                <a href="/" class="list-group-item {% if not current_category %}active{% endif %}">All</a>
+                <a href="/" class="list-group-item {% if not current_category %}active{% endif %}">전체</a>
                 {% for c in categories %}
                     <a href="{{c.get_absolute_url}}" class="list-group-item {% if current_category.slug == c.slug %}active{% endif %}">{{c.name}}</a>
                 {% endfor %}
@@ -18,7 +18,7 @@
                 {% if current_category %}
                     {{current_category.name}}
                 {% else %}
-                    All Products
+                    상품 전체
                 {% endif %}
             </div>
             <div class="row">
@@ -42,6 +42,31 @@
             </div>
         </div>
     </div>
+
+<style>
+
+body{
+    background: #F5EEDC;
+}
+
+.alert alert-info{
+    width:100%;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+
+.list-group{
+    color: #97BFB4;
+}
+
+.card-body{
+    color: #97BFB4;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+}
+</style>
 
 
 {% endblock %}

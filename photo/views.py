@@ -6,7 +6,6 @@ from django.views.decorators.http import require_POST
 from django.views.generic import CreateView, DeleteView, UpdateView, DetailView
 
 import photo
-from photo.forms import CommentForm
 from photo.models import Photo, Comment
 
 

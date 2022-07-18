@@ -7,15 +7,17 @@
     <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 panel panel-default">
+                <h1>{{object.title|linebreaksbr}}</h1>
                 {% if object.photo %}
                     <p><img src="{{object.photo.url}}" style="width: 360px; height: 300px;"></p>
                 {% else %}
 
                 {% endif %}
 
-                <p>제목: {{object.title|linebreaksbr}}</p>
                 <p>내용: {{object.text|linebreaksbr}}</p>
                 <p>작성자:   {{object.author.username}}</p>
+                <p>작성일자: {{object.created}}</p>
+                <p>수정일자: {{object.updated}}</p>
                 {% if request.user == object.author %}
                 <a href="{% url 'board:board_delete' pk=object.id %}" class="btn btn-outline-danger btn-sm float-right">
                     삭제</a>
