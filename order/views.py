@@ -1,6 +1,6 @@
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
 from django.views.generic import ListView
 
 from shop.models import Category
@@ -155,4 +155,8 @@ class OrderList(ListView):
     context_object_name = 'order_list'
 
 
+class OrderItemList(ListView):
+    model = OrderItem
 
+    template_name = 'orderitem_list.html'
+    context_object_name = 'orderitem_list'

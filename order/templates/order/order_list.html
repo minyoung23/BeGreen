@@ -7,12 +7,14 @@
 <!-- 필터를 사용할 수 있게 해준다 -->
 {% load humanize%}
 {% block content %}
+<div><a href="{% url 'orders:orderitem_list' %}" class="btn btn-primary">주문상품상세정보</a></div>
 <div class="row mt-5">
     <div class="col-12">
         <table class="table table-light">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">주문날짜</th>
                     <th scope="col">전화번호</th>
                     <th scope="col">주소</th>
                     <th scope="col">주문가격</th>
@@ -23,6 +25,7 @@
                 {% for order in order_list %}
                 <tr>
                     <td>{{order.id}}</td>
+                    <td>{{order.created}}</td>
                     <td>{{order.tel}}</td>
                     <td>{{order.address}}</td>
                     <td>{{order.get_total_price|intcomma}}원</td>
@@ -37,4 +40,7 @@
         </table>
     </div>
 </div>
+
+
+
 {% endblock %}

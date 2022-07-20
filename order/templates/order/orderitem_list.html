@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+주문 확인 페이지
+{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-12">
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">상품명</th>
+                    <th scope="col">제품가격과 주문수량 정보</th>
+                </tr>
+            </thead>
+            <tbody class="text-dark">
+                {% for item in orderitem_list %}
+                <tr>
+                    <td>{{item.id }}</td>
+                    <td>{{item.item}}</td>
+                    <td>{{item.item.item_price}}원  x {{item.quantity}}개 </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

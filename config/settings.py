@@ -20,7 +20,7 @@ ROOT_DIR=os.path.dirname(BASE_DIR)
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2aj^@xn_ae72&i*wtcul+f%w!1+3-_$o0yfu&63dgnmu@w-nqz'
+SECRET_KEY = '비워두기'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -150,8 +150,8 @@ SITE_ID=1
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
-IAMPORT_KEY = '비워두기'
-IAMPORT_SECRET = '비워두기'
+IAMPORT_KEY = '7481832431924223'
+IAMPORT_SECRET = '6e5114c91d3eb212deb6adccf1ff5bf764608cd7aef253e5e9d78e929df29b59ff92a78ad796a626'
 
 # Email 전송
 # 메일을 호스트하는 서버
@@ -174,3 +174,5 @@ EMAIL_USE_TLS = True
 
 # 사이트와 관련한 자동응답을 받을 이메일 주소
 DEFAULT_FROM_EMAIL = 'kkangyunn@naver.com'
+
+

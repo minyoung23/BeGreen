@@ -13,7 +13,7 @@
 
                     <p><span class="badge badge-secondary">가격</span> {{item.item_price}}원</p>
                     <p><span class="badge badge-secondary">브랜드</span> {{item.brand}}</p>
-                    <p><span class="badge badge-secondary">수량</span> {{item.item_amt}}개</p>
+                    <p><span class="badge badge-secondary">재고</span> {{item.item_amt}}개</p>
                     {% if user.is_authenticated %}
                     <form action="{% url 'cart:item_add' item.id %}" method="post">
                         {{add_to_cart}}
