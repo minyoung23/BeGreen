@@ -154,9 +154,3 @@ class OrderList(ListView):
     template_name = 'order_list.html'
     context_object_name = 'order_list'
 
-
-class OrderItemList(ListView):
-    model = OrderItem
-
-    template_name = 'orderitem_list.html'
-    context_object_name = 'orderitem_list'

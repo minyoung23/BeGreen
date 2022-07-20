@@ -167,7 +167,7 @@ EMAIL_HOST_USER = 'kkangyunn@naver.com'
 
 # 발신할 메일의 비밀번호
 # EMAIL_HOST_PASSWORD = '구글비밀번호'
-EMAIL_HOST_PASSWORD = '비워두기'
+EMAIL_HOST_PASSWORD = 'awards4567'
 
 # TLS 보안 방법
 EMAIL_USE_TLS = True

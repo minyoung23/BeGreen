@@ -1,14 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+아이디 찾기
+{% endblock %}
+
+{% block content %}
 <h1>아이디 찾기</h1>
 
-<p>회원가입시 작성했던 이메일을 적어줏세요ㅎㅎ</p>
+<p>회원 가입시 작성했던 이메일을 기입하십시오.</p>
 
 <form method="post">
 
   {% csrf_token %}
   Email:<input type="email" name="email">
-  <input type="Submit" name="email_submit">
+  <input type="Submit" name="email_submit" value="입력"><br><br>
+  ID:
   {% for message in messages %}
       {{message}}
   {% endfor %}
 
 </form>
+{% endblock %}

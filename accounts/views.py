@@ -28,7 +28,7 @@ def ForgotIDview(request):
             if user is not None:
                     messages.info(request, str(user.username))
         except:
-            messages.info(request, "존재하지 않는 회원입니다!!")
+            messages.info(request, "존재하지 않는 회원입니다.")
     context = {}
     return render(request, 'registration/forgot_id.html', context)
 
