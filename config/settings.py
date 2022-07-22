@@ -150,8 +150,8 @@ SITE_ID=1
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
-IAMPORT_KEY = '7481832431924223'
-IAMPORT_SECRET = '6e5114c91d3eb212deb6adccf1ff5bf764608cd7aef253e5e9d78e929df29b59ff92a78ad796a626'
+IAMPORT_KEY = '비워두기'
+IAMPORT_SECRET = '비워두기'
 
 # Email 전송
 # 메일을 호스트하는 서버
