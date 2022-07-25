@@ -1,8 +1,58 @@
+<!DOCTYPE html>
 {% extends 'base.html' %}
 {% block title %}Product Detail{% endblock %}
 {% block content %}
 <!--훗날 상품후기 추가-->
+<style>
+    .container{
+        margin-top: 30px;
+    }
+    .container .col-4 {
+        display: flex;
+    }
 
+    .container .col-4 > img {
+        margin: auto;
+    }
+    .container .col {
+        padding-top: 10px;
+        padding-left: 50px;
+    }
+
+    .container .col > h2{
+        color: #888888;
+    }
+    .buy-button-wrap {
+        margin-top: 10px;
+	padding-top: 2px;
+	border-radius: 5px;
+	width: 600px;
+	height : 48px;
+	font-size: 18px;
+	background: #97BFB4;
+	color: white;
+	border: solid 1px #97BFB4;
+}
+
+    .cart-button-wrap{
+        margin-left: 30px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        padding-top: 2px;
+	    border-radius: 5px;
+	    width: 300px;
+	    height : 48px;
+	    font-size: 18px;
+	    background: white;
+	    color: #97BFB4;
+	    border: solid 1px #97BFB4;
+    }
+
+    .detail{
+        height: 3500px;
+    }
+</style>
+<body>
         <div class="container">
             <div class="row">
                 <div class="col-4">
@@ -10,25 +60,36 @@
                 </div>
                 <div class="col">
                     <h1 class="display-6">{{item.item_name}}</h1>
-
-                    <p><span class="badge badge-secondary">가격</span> {{item.item_price}}원</p>
+                    <hr>
+                    <h2>{{item.item_price}}원</h2>
+                    <br>
                     <p><span class="badge badge-secondary">브랜드</span> {{item.brand}}</p>
-                    <p><span class="badge badge-secondary">재고</span> {{item.item_amt}}개</p>
+                    <p><span class="badge badge-secondary">재고 수량</span> {{item.item_amt}}개</p>
+
+                    <p><span class="badge badge-secondary">설명</span>{{item.description|linebreaks}}</p>
+                    <p><span class="badge badge-secondary">배송비</span> 2500원</p>
+
+
                     {% if user.is_authenticated %}
                     <form action="{% url 'cart:item_add' item.id %}" method="post">
                         {{add_to_cart}}
                         {% csrf_token %}
-                        <input type="submit" class="btn btn-primary btn-sm" value="장바구니 담기">
-                    </form>
+                    <input class="cart-button-wrap " type="submit" value="ADD CART">
+                        </form>
                     {% else %}
-                    로그인하신 분만 구매 가능
+                    <!-- 로그인 하신분만 구매가능 -->
                     {% endif %}
-                    <h5><span class="badge badge-secondary">설명</span>{{item.description|linebreaks}}</h5>
+
+                    <input class="buy-button-wrap " type="submit" value="BUY NOW">
                 </div>
             </div>
-        배송비 기본 2500원
+
         </div>
-<hr>
+        <hr>
+        <div class="detail">
+            <img src="{{item.item_image_detail.url}}" width="100%">
+        </div>
+    <hr>
     <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 panel panel-default">
@@ -37,4 +98,6 @@
             </div>
             <div class="col-md-2"></div>
     </div>
+</body>
+</html>
 {% endblock %}

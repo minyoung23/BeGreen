@@ -18,10 +18,7 @@
     <table class="table table-striped">
         <thead>
             <tr bgcolor="97BFB4" align="center">
-                <th width="200" scope="col">
-                    <input type="checkbox" id="itemAll" name="itemAll" value="y" onclick="itemAllChk()">
-                    <label for="itemAll">&nbsp;&nbsp;&nbsp;전체선택</label>
-                </th>
+                <th scope="col">상품이미지</th>
                 <th scope="col">상품</th>
                 <th scope="col">수량</th>
                 <th scope="col">가격</th>
@@ -34,12 +31,9 @@
             {% with item=product.item %}
             <tr align="center" scope="row">
                 <th> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="checkbox" id="item1" name="item[]">
-                    <label for="item1">
                     <a href="{{ item.get_absolute_url }}">
                         <img src="{{ item.item_image.url }}" width="100" height="100" class="img-thumbnail">
                     </a>
-                    </label>
                 </th>
 
                 <td>{{ item.item_name }}</td>
@@ -104,46 +98,10 @@
         {% if cart.get_total_price > 2500 %}
         <center><a href='{% url "orders:order_create" %}' class="button3">구매하기</a></center>
         {% else %}
-        <center><p class="button5">물건을 선택하신 분만 구매가능합니다.</p></center>
+        <center><p class="button5">상품을 1개 이상 선택하여야만 구매 가능합니다.</p></center>
         {% endif %}
     </p>
 
-
-<script>
-function itemAllChk() {
-    if (document.getElementById("itemAll").checked) {
-
-        var obj = document.getElementsByName("item[]");
-        for (i=0;i<obj.length;i++) {
-            obj[i].checked = true;
-//            document.getElementsByName("item[]")[i].checked = true;
-        }
-
-    } else {
-
-        var obj = document.getElementsByName("item[]");
-        for (i=0;i<obj.length;i++) {
-            obj[i].checked = false;
-//            document.getElementsByName("item[]")[i].checked = false;
-        }
-
-    }
-}
-
-function itemChk() {
-    var str = "";
-
-    var obj = document.getElementsByName("item[]");
-    for (i=0;i<obj.length;i++) {
-        if (obj[i].checked) {
-            str += " " + obj[i].value;
-        }
-    }
-    alert(str);
-}
-
-
-</script>
 
 
 <style>

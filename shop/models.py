@@ -26,6 +26,7 @@ class Item(models.Model):
     slug = models.SlugField(max_length=200, db_index=True, unique=True, allow_unicode=True)
 
     item_image = models.ImageField(upload_to='products/%Y/%m/%d',blank=True)
+    item_image_detail = models.ImageField(upload_to='products_detail/%Y/%m/%d', blank=True)
     description = models.TextField(blank=True)
     meta_description = models.TextField(blank=True)
     brand = models.CharField(max_length=100, verbose_name='브랜드', null=True, blank=True)
